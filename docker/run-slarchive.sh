@@ -6,6 +6,10 @@ export PATH="$SEISCOMP_ROOT/bin:$PATH"
 
 mkdir -p "$SEISCOMP_ROOT/var/run"
 
+if [ -f /docker/apply-station-set.py ]; then
+  python3 /docker/apply-station-set.py
+fi
+
 host="${SEEDLINK_HOST:-seedlink}"
 port="${SEEDLINK_PORT:-18000}"
 cfg="$SEISCOMP_ROOT/etc/slarchive.cfg"

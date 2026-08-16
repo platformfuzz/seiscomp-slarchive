@@ -48,9 +48,9 @@ RUN apt-get update \
 COPY --chown=sysop:sysop config/global.cfg /home/sysop/seiscomp/etc/global.cfg
 COPY --chown=sysop:sysop config/slarchive.cfg /home/sysop/seiscomp/etc/slarchive.cfg
 COPY --chown=sysop:sysop config/key/ /home/sysop/seiscomp/etc/key/
-COPY docker/entrypoint.sh docker/run-slarchive.sh /docker/
+COPY docker/entrypoint.sh docker/run-slarchive.sh docker/apply-station-set.py /docker/
 
-RUN chmod 0755 /docker/entrypoint.sh /docker/run-slarchive.sh
+RUN chmod 0755 /docker/entrypoint.sh /docker/run-slarchive.sh /docker/apply-station-set.py
 
 USER sysop
 ENV SEISCOMP_ROOT=/home/sysop/seiscomp
