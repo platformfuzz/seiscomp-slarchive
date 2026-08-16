@@ -52,7 +52,10 @@ def info_stations(host: str, port: int) -> list[tuple[str, str]]:
     out: list[tuple[str, str]] = []
     seen: set[tuple[str, str]] = set()
     for raw_sta, raw_net in pairs:
-        sta, net = raw_sta.decode(), raw_net.decode()
+        try:
+            sta, net = raw_sta.decode("ascii"), raw_net.decode("ascii")
+        except UnicodeDecodeError:
+            continue
         if not re.fullmatch(r"[A-Za-z0-9]+", sta):
             continue
         if not re.fullmatch(r"[A-Za-z0-9]+", net):
