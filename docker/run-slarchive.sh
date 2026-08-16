@@ -4,6 +4,8 @@ set -euo pipefail
 export SEISCOMP_ROOT="${SEISCOMP_ROOT:-/home/sysop/seiscomp}"
 export PATH="$SEISCOMP_ROOT/bin:$PATH"
 
+mkdir -p "$SEISCOMP_ROOT/var/run"
+
 host="${SEEDLINK_HOST:-seedlink}"
 port="${SEEDLINK_PORT:-18000}"
 cfg="$SEISCOMP_ROOT/etc/slarchive.cfg"
